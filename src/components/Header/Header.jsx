@@ -4,9 +4,7 @@ import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-
 function Header(){
-
    const authStatus=useSelector((state)=> state.auth.status)
    const navigate= useNavigate()
 
@@ -28,7 +26,7 @@ function Header(){
     },
      {
         name:"All Posts",
-        slug:"/all-post",
+        slug:"/all-posts",
         active: authStatus,
     },
      {
@@ -41,7 +39,6 @@ function Header(){
 
     return(
        <header className='py-3 shadow bg-gray-500'>
-
         <Container>
             
             <nav className='flex'>
@@ -72,13 +69,13 @@ function Header(){
                     <LogoutBtn/>
                  </li>
                  ) }
+                 
               </ul>
             </nav>
 
         </Container>
 
        </header>
-        
     )
 };
 

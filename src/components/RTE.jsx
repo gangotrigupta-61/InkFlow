@@ -15,6 +15,9 @@ export default function RTE ({name, control,label, defaultvalue=""}){
             render={({field:{onchange}})=>(
                 <Editor 
                 initialValue={defaultvalue}
+                
+                apiKey={import.meta.env.VITE_apiKey}
+
                 init={{
                     initialValue:defaultvalue,
                     height:500,
@@ -46,7 +49,7 @@ export default function RTE ({name, control,label, defaultvalue=""}){
             "undo redo | blocks | image | bold italic forecolor | alignleft aligncenter bold italic forecolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent |removeformat | help",
             content_style: "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }"
         }}
-        onEditorChange={onChange}
+        onEditorChange={onchange}
         />
     )}
     />

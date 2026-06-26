@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 function PostForm({post}){
-    const { register, handlesubmit, watch, setvalue, control, getvalues }=
+    const { register, handleSubmit, watch, setValue, control, getValues }=
     useForm({
         defaultValues:{
             title:post?.title || ' ',
@@ -19,7 +19,7 @@ function PostForm({post}){
     });
 
         const navigate=useNavigate();
-        const userData=useSelector(state => state.user.userData);
+        const userData=useSelector(state => state.auth.userData);
 
 
     const submit = async (data) => {

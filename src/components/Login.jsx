@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-import {Link, matchPath, useNavigate} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import {login as authLogin} from '../store/authslice'
 import {Button, Input, Logo} from './index';
 import { useDispatch } from 'react-redux';
@@ -9,7 +9,7 @@ import {useForm} from 'react-hook-form'
 function Login(){
     const navigate=useNavigate()
     const dispatch=useDispatch()
-    const {register, handlesubmit}=useForm()
+    const {register, handleSubmit}=useForm()
 
     const [error, setError]=useState("")
 
@@ -56,21 +56,20 @@ function Login(){
         {error && <p className="text-red-600 mt-8 text-center">{error} 
             </p>}
 
-        <form onSubmit={handlesubmit(login)}
+        <form onSubmit = {handleSubmit(login)}
           className='mt-8'>
             <div className='space-y-5'>
 
                <Input label="Email:"
                   placeholder="Enter your Email"
                   type="email" {
-                    ...register("email"),{
+                    ...register("email",{
                         required:true,
                         validate:{
-                             matchPattern:(value)=> /\b[\w\.-]+@[\w\.-]+\.\w{2,4}\b/.
-                             test(value)|| "Email address must be a valid address",
+                             matchPattern:(value)=> /\b[\w\.-]+@[\w\.-]+\.\w{2,4}\b/
+                             .test(value) ||  "Email address must be a valid address",
                         }
-                    }
-                  }/>
+                    })} />
 
                    <Input
                 label="Password: "

@@ -4,7 +4,7 @@ import {Link, matchPath, useNavigate} from 'react-router-dom'
 import {Button, Input, Logo} from './index';
 import { useDispatch } from 'react-redux';
 import authService from '../appwrite/auth'
-import {set, useForm} from 'react-hook-form'
+import {useForm} from 'react-hook-form'
 
 function Signup(){
    const navigate=useNavigate()
@@ -13,14 +13,14 @@ function Signup(){
    const {register, handleSubmit}=useForm()
 
    const create=async(data)=>{
-    setError("")
-   }
+    setError("");
+   
 
    try {
-    const userData= authService.createAccount(data)
+    const userData= await authService.createAccount(data)
 
     if(userData){
-        const userData= authService.getCurrentUser()
+        const userData= await authService.getCurrentUser()
         if(userData) dispatch (login(userData));
         navigate("/")
     }
@@ -30,6 +30,8 @@ function Signup(){
    catch (error) {
      setError(error.message)
    }
+
+  }
 
 
 return(
@@ -68,14 +70,14 @@ return(
                     <Input label="Email:"
                       placeholder="Enter your Email"
                       type="email" {
-                        ...register("email"),{
+                        ...register("email",{
                             required:true,
                             validate:{
                                  matchPattern:(value)=> /\b[\w\.-]+@[\w\.-]+\.\w{2,4}\b/.
                                  test(value)|| "Email address must be a valid address",
-                            }
-                        }
-                      }/>
+                            },
+                        })}
+                      />
 
               <Input label="Password:" type="password"
                placeholder="Enter your Password"
