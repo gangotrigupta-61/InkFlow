@@ -1,6 +1,8 @@
-# Blog App (React + Appwrite) 🚀
+# InkFlow ✍️  (React + Appwrite)🚀
 
-A full-stack-ready blog frontend built with React, Vite, Redux Toolkit, React Router, Tailwind CSS, and Appwrite services.
+Write_Share_Inspire ✨✨
+
+A full-stack-ready modern blogging platform built with React, Vite, Redux Toolkit, React Router, Tailwind CSS, and Appwrite services.
 
 This project includes ✨:
 
